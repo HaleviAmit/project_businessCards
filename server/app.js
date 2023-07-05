@@ -23,7 +23,9 @@ const connect = async () => {
 };
 
 connect();
-app.use(cors());
+app.use(cors({
+  origin: ["project-business-cards.vercel.app"]
+}));
 
 app.use(express.json());
 
