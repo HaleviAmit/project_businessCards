@@ -8,14 +8,24 @@ const mongoose = require("mongoose");
 const { User } = require("./models/user");
 const cors = require("cors");
 
+let isConnected = false; // track the connection
+
 const connect = async () => {
+  mongoose.set('strictQuery', true);
+
+  if (isConnected) {
+    console.log('MongoDB is already connected');
+    return;
+  }
   try {
-    await mongoose.connect("mongodb://127.0.0.1/my_rest_api", {
+    await mongoose.connect("mongodb+srv://DoovDevan:DoovDevan@cluster0.m4yfxvd.mongodb.net/?retryWrites=true&w=majority", {
+      dbName: "business_cards",
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
     });
+    isConnected = true;
     console.log("Connected to MongoDB...");
   } catch (ex) {
     console.log("Could not connect to MongoDB..." + ex);
