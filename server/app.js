@@ -34,7 +34,7 @@ const connect = async () => {
 
 connect();
 app.use(cors({
-  origin: ["project-business-cards-ela5.vercel.app"],
+  origin: ["project-business-cards.vercel.app"],
   methods: ["POST", "GET"],
   credentials: true
 }));
