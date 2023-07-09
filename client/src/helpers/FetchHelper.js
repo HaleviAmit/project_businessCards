@@ -1,4 +1,4 @@
-let baseUrl = 'http://localhost:3000';
+let baseUrl = 'https://project-business-cards.vercel.app/';
 
 export function registerNewAccount(data, callback) {
   let url = baseUrl + '/api/users';
