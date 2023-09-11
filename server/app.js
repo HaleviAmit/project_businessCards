@@ -36,7 +36,7 @@ connect();
 app.use(cors({
   origin: ["https://project-business-cards-1vti.vercel.app"],
   methods: ["POST", "GET"],
-  credentials: true
+  credentials: true,
 }));
 
 app.use(express.json());
