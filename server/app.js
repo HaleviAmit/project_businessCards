@@ -40,7 +40,7 @@ require('dotenv').config()
 //   credentials: true,
 // }));
 
-// app.use(express.json());
+app.use(express.json());
 
 // app.use("/api/users", users);
 
