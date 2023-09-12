@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
   res.send(new Date().toLocaleTimeString());
 });
 
+
 app.get("/allusers", (req, res) => {
   const users = User.find({});
   console.log(users.length);
@@ -59,3 +60,5 @@ app.get("/allusers", (req, res) => {
 
 const port = 3000;
 http.listen(port, () => console.log(`Listening on port ${port}...`));
+
+// test net
