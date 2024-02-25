@@ -39,7 +39,7 @@ const connect = async () => {
 connect();
 app.use(
   cors({
-    origin: ["https://project-business-cards-1vti.vercel.app"],
+    origin: ["https://project-business-cards-1vti.vercel.app/"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
     exposedHeaders: [
