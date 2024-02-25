@@ -42,6 +42,16 @@ app.use(
     origin: ["https://project-business-cards-1vti.vercel.app"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
+    exposedHeaders: [
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "X-Api-Version",
+    ], // Only specify required headers
   })
 );
 
