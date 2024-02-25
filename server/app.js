@@ -4,7 +4,7 @@ const cards = require("./routes/cards");
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
-require('dotenv').config()
+require("dotenv").config();
 const mongoose = require("mongoose");
 const { User } = require("./models/user");
 const cors = require("cors");
@@ -12,20 +12,23 @@ const cors = require("cors");
 let isConnected = false; // track the connection
 
 const connect = async () => {
-  mongoose.set('strictQuery', true);
+  mongoose.set("strictQuery", true);
 
   if (isConnected) {
-    console.log('MongoDB is already connected');
+    console.log("MongoDB is already connected");
     return;
   }
   try {
-    await mongoose.connect("mongodb+srv://DoovDevan:DoovDevan@cluster0.m4yfxvd.mongodb.net/?retryWrites=true&w=majority", {
-      dbName: "business_cards",
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
+    await mongoose.connect(
+      "mongodb+srv://DoovDevan:DoovDevan@cluster0.m4yfxvd.mongodb.net/?retryWrites=true&w=majority",
+      {
+        dbName: "business_cards",
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+      }
+    );
     isConnected = true;
     console.log("Connected to MongoDB...");
   } catch (ex) {
@@ -34,11 +37,13 @@ const connect = async () => {
 };
 
 connect();
-app.use(cors({
-  origin: ["https://project-business-cards-1vti.vercel.app"],
-  methods: ["POST", "GET"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ["https://project-business-cards-1vti.vercel.app"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
@@ -52,12 +57,11 @@ app.get("/", (req, res) => {
   res.send(new Date().toLocaleTimeString());
 });
 
-
 app.get("/allusers", (req, res) => {
   const users = User.find({});
   console.log(users.length);
   res.send(users[0]);
 });
 
-const port = process.env.PORT
+const port = process.env.PORT;
 http.listen(port, () => console.log(`Listening on port ${port}...`));
